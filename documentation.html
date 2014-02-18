@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Bakame.csv by nyamsprod</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/nyamsprod/Bakame.csv">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/nyamsprod/Bakame.csv/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/nyamsprod/Bakame.csv/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Bakame.csv</h1>
+          <p>Csv data manipulation made easy in PHP 5.4+</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/nyamsprod">nyamsprod</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+<h1>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+<p>The library is composed of two main classes:</p>
+
+<ul>
+<li>
+<code>Bakame\Csv\Reader</code> to extract and filter data from a CSV</li>
+<li>
+<code>Bakame\Csv\Writer</code> to insert new data into a CSV.</li>
+</ul><p>Both classes share methods to instantiate, format and output the CSV.</p>
+
+<h3>
+<a name="instantiation" class="anchor" href="#instantiation"><span class="octicon octicon-link"></span></a>Instantiation</h3>
+
+<p>There's several ways to instantiate these classes:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Bakame\Csv\Reader</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Bakame\Csv\Writer</span><span class="p">;</span>
+
+<span class="nv">$reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reader</span><span class="p">(</span><span class="s1">'/path/to/your/csv/file.csv'</span><span class="p">);</span>
+<span class="nv">$reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reader</span><span class="p">(</span><span class="k">new</span> <span class="nx">SpliFileInfo</span><span class="p">(</span><span class="s1">'/path/to/your/csv/file.csv'</span><span class="p">));</span>
+<span class="nv">$reader</span> <span class="o">=</span> <span class="nx">Reader</span><span class="o">::</span><span class="na">createFromString</span><span class="p">(</span><span class="s1">'john,doe,john.doe@example.com'</span><span class="p">);</span>
+
+<span class="c1">//or </span>
+
+<span class="nv">$writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Writer</span><span class="p">(</span><span class="s1">'/path/to/your/csv/file.csv'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">);</span>
+<span class="nv">$writer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Writer</span><span class="p">(</span><span class="k">new</span> <span class="nx">SpliFileObject</span><span class="p">(</span><span class="s1">'/path/to/your/csv/file.csv'</span><span class="p">),</span> <span class="s1">'a+'</span><span class="p">);</span>
+<span class="nv">$writer</span> <span class="o">=</span> <span class="nx">Writer</span><span class="o">::</span><span class="na">createFromString</span><span class="p">(</span><span class="s1">'john,doe,john.doe@example.com'</span><span class="p">);</span>
+</pre></div>
+
+<p>Both classes constructors take one optional parameter <code>$open_mode</code> representing the file open mode used by the PHP <a href="http://php.net/manual/en/function.fopen.php">fopen</a> function. </p>
+
+<ul>
+<li>The <code>Bakame\Csv\Writer</code> <code>$open_mode</code> default value is <code>w</code>.</li>
+<li>The <code>Bakame\Csv\Reader</code> <code>$open_mode</code> default value is <code>r</code>, and <strong>no other value is possible</strong>. So you don't need to explicitly set it.</li>
+</ul><p>The static method <code>createFromString</code> is to be use if your data is a string. This method takes no optional <code>$open_mode</code> parameter.</p>
+
+<p>Once your object is created you can optionally set:</p>
+
+<ul>
+<li>the CSV delimiter, enclosure and/or escape characters;</li>
+<li>the object <code>SplFileObject</code> flags;</li>
+<li>the CSV encoding charset if the CSV is not in <code>UTF-8</code>;</li>
+</ul><div class="highlight highlight-php"><pre><span class="nv">$reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reader</span><span class="p">(</span><span class="s1">'/path/to/your/csv/file.csv'</span><span class="p">);</span>
+
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setDelimeter</span><span class="p">(</span><span class="s1">','</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setEnclosure</span><span class="p">(</span><span class="s1">'"'</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setEscape</span><span class="p">(</span><span class="s1">'\\'</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setFlags</span><span class="p">(</span><span class="nx">SplFileObject</span><span class="o">::</span><span class="na">READ_AHEAD</span><span class="o">|</span><span class="nx">SplFileObject</span><span class="o">::</span><span class="na">SKIP_EMPTY</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">'iso-8859-1'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="traversing-the-csv" class="anchor" href="#traversing-the-csv"><span class="octicon octicon-link"></span></a>Traversing the CSV</h3>
+
+<p>With both classes you can iterate over your csv data using the <code>foreach</code> construct:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">foreach</span> <span class="p">(</span><span class="nv">$reader</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//do something meaningfull here with $row !!</span>
+    <span class="c1">//$row is an array where each item represent a CSV data cell</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="outputting-the-csv" class="anchor" href="#outputting-the-csv"><span class="octicon octicon-link"></span></a>Outputting the CSV</h3>
+
+<p><strong>Don't forget to set the CSV encoding format before using any outputting CSV method if your data is not <code>UTF-8</code> encoded.</strong></p>
+
+<p>With both classes you can:</p>
+
+<h4>
+<a name="show-the-csv-content" class="anchor" href="#show-the-csv-content"><span class="octicon octicon-link"></span></a>show the CSV content:</h4>
+
+<p>Use the <code>echo</code> construct on the instantiated object or use the <code>__toString</code> method.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">echo</span> <span class="nv">$writer</span><span class="p">;</span>
+<span class="c1">//or</span>
+<span class="k">echo</span> <span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">__toString</span><span class="p">();</span>
+</pre></div>
+
+<h4>
+<a name="convert-to-xml" class="anchor" href="#convert-to-xml"><span class="octicon octicon-link"></span></a>convert to XML:</h4>
+
+<p>Use the <code>toXML</code> method to convert the CSV data into a PHP <code>DomDocument</code> object. This method accepts 3 optionals arguments <code>$root_name</code>, <code>$row_name</code>, <code>$cell_name</code> to help you customize the XML tree. </p>
+
+<p>By default:</p>
+
+<ul>
+<li>
+<code>$root_name = 'csv'</code> </li>
+<li>
+<code>$row_name = 'row'</code> </li>
+<li>
+<code>$cell_name = 'cell'</code> </li>
+</ul><div class="highlight highlight-php"><pre><span class="nv">$dom</span> <span class="o">=</span> <span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">toXML</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="s1">'item'</span><span class="p">,</span> <span class="s1">'cell'</span><span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="convert-to-html-table" class="anchor" href="#convert-to-html-table"><span class="octicon octicon-link"></span></a>convert to HTML table:</h4>
+
+<p>Use the <code>toHTML</code> method to format the CSV data into an HTML table. This method accepts an optional argument <code>$classname</code> to help you customize the table rendering, by defaut the classname given to the table is <code>table-csv-data</code>.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">echo</span> <span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">toHTML</span><span class="p">(</span><span class="s1">'table table-bordered table-hover'</span><span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="convert-to-json" class="anchor" href="#convert-to-json"><span class="octicon octicon-link"></span></a>convert to Json</h4>
+
+<p>Use the <code>json_encode</code> function directly on the instantiated object.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$writer</span><span class="p">);</span>
+</pre></div>
+
+<p><strong>Of Note:</strong> When using the <code>toHTML</code>, <code>toXML</code> methods and the <code>json_encode</code> function, the data is internally convert if needed into <code>UTF-8</code>.</p>
+
+<h4>
+<a name="download-the-csv" class="anchor" href="#download-the-csv"><span class="octicon octicon-link"></span></a>download the CSV</h4>
+
+<p>If you only wish to make your CSV downloadable just use the <code>output</code> method to return to the output buffer the CSV content.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">'ISO-8859-15'</span><span class="p">);</span>
+<span class="nx">header</span><span class="p">(</span><span class="s1">'Content-Type: text/csv; charset="'</span><span class="o">.</span><span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">getEncoding</span><span class="p">()</span><span class="o">.</span><span class="s1">'"'</span><span class="p">);</span>
+<span class="nx">header</span><span class="p">(</span><span class="s1">'Content-Disposition: attachment; filename="name-for-your-file.csv"'</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">();</span>
+</pre></div>
+
+<p>The output method can take an optional argument <code>$filename</code>. When present you can even omit most of the headers.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">'ISO-8859-15'</span><span class="p">);</span>
+<span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">(</span><span class="s2">"name-for-your-file.csv"</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="extracting-data-from-the-csv" class="anchor" href="#extracting-data-from-the-csv"><span class="octicon octicon-link"></span></a>Extracting data from the CSV</h2>
+
+<p>To extract data use <code>Bakame\Csv\Reader</code> methods.</p>
+
+<h4>
+<a name="fetchallcallable--null" class="anchor" href="#fetchallcallable--null"><span class="octicon octicon-link"></span></a>fetchAll($callable = null)</h4>
+
+<p><code>fetchAll</code> returns a sequential array of all rows.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+<span class="c1">// will return something like this :</span>
+<span class="c1">// </span>
+<span class="c1">// [ </span>
+<span class="c1">//   ['john', 'doe', 'john.doe@example.com'],</span>
+<span class="c1">//   ['jane', 'doe', 'jane.doe@example.com'],</span>
+<span class="c1">//   ...</span>
+<span class="c1">// ]</span>
+<span class="c1">//</span>
+</pre></div>
+
+<h4>
+<a name="fetchassoc-callable--null" class="anchor" href="#fetchassoc-callable--null"><span class="octicon octicon-link"></span></a>fetchAssoc([], $callable = null)</h4>
+
+<p><code>fetchAssoc</code> returns a sequential array of all rows. The rows themselves are associative arrays where the keys are given directly to the method using an one dimension array. This array should only contain unique <code>string</code> and/or <code>integer</code> values.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">fetchAssoc</span><span class="p">([</span><span class="s1">'firstname'</span><span class="p">,</span> <span class="s1">'lastname'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">]);</span>
+<span class="c1">// will return something like this :</span>
+<span class="c1">// </span>
+<span class="c1">// [ </span>
+<span class="c1">//   ['firstname' =&gt; 'john', 'lastname' =&gt; 'doe', 'email' =&gt; 'john.doe@example.com'],</span>
+<span class="c1">//   ['firstname' =&gt; 'jane', 'lastname' =&gt; 'doe', 'email' =&gt; 'jane.doe@example.com'],</span>
+<span class="c1">//   ...</span>
+<span class="c1">// ]</span>
+<span class="c1">// </span>
+</pre></div>
+
+<blockquote>
+<ul>
+<li>If the number of values in a CSV row is lesser than the number of named keys, the method will add <code>null</code> values to compensate for the missing values.</li>
+<li>If the number of values in a CSV row is greater that the number of named keys the exceeding values will be drop from the result set.</li>
+</ul>
+</blockquote>
+
+<h4>
+<a name="fetchcolcolumnindex--0-callable--null" class="anchor" href="#fetchcolcolumnindex--0-callable--null"><span class="octicon octicon-link"></span></a>fetchCol($columnIndex = 0, $callable = null)</h4>
+
+<p><code>fetchCol</code> returns a sequential array of all values in a given column from the CSV data.</p>
+
+<ul>
+<li>If no argument is given to the method it will return the first colum from the CSV data.</li>
+<li>If the column does not exists in the csv data the method will return an array full of null value.</li>
+</ul><div class="highlight highlight-php"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">fetchCol</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">// will return something like this :</span>
+<span class="c1">// </span>
+<span class="c1">// ['john.doe@example.com', 'jane.doe@example.com', ...]</span>
+<span class="c1">// </span>
+
+</pre></div>
+
+<p>The methods listed above (<code>fetchAll</code>, <code>fetchAssoc</code>, <code>fetchCol</code>) can all take a optional <code>callable</code> argument to further manipulate each row before being returned. This callable function can take up to three parameters:</p>
+
+<ul>
+<li>the current csv row data</li>
+<li>the current csv key</li>
+<li>the current csv Iterator Object</li>
+</ul><h4>
+<a name="fetchoneoffset--0" class="anchor" href="#fetchoneoffset--0"><span class="octicon octicon-link"></span></a>fetchOne($offset = 0)</h4>
+
+<p><code>fetchOne</code> return one single row from the CSV data. The required argument <code>$offset</code> represent the row index starting at 0. If no argument is given to the method it will return the first row from the CSV data.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">///accessing the 4th row (indexing starts at 0)</span>
+<span class="c1">// will return something like this :</span>
+<span class="c1">// </span>
+<span class="c1">//   ['john', 'doe', 'john.doe@example.com']</span>
+<span class="c1">//</span>
+</pre></div>
+
+<h3>
+<a name="filtering-the-data" class="anchor" href="#filtering-the-data"><span class="octicon octicon-link"></span></a>Filtering the data</h3>
+
+<p>You can further manipulate the CSV <code>fetch*</code> methods output by specifying filtering options using the following methods:</p>
+
+<h4>
+<a name="setfiltercallable--null" class="anchor" href="#setfiltercallable--null"><span class="octicon octicon-link"></span></a>setFilter($callable = null)</h4>
+
+<p><code>setFilter</code> method specifies an optional <code>callable</code> function to filter the CSV data. This function takes three parameters at most (see <a href="http://php.net/manual/en/class.callbackfilteriterator.php#callbackfilteriterator.examples">CallbackFilterIterator</a> for more informations)</p>
+
+<h4>
+<a name="setsortbycallable--null" class="anchor" href="#setsortbycallable--null"><span class="octicon octicon-link"></span></a>setSortBy($callable = null)</h4>
+
+<p><code>setSortBy</code> method specifies an optional <code>callable</code> function to sort the CSV data. The function takes two parameters which will be filled by pairs of rows.</p>
+
+<p><strong>Beware when using this filter that you will be using <code>iterator_to_array</code> which could lead to performance penalty if you have a heavy CSV file to sort</strong></p>
+
+<h4>
+<a name="setoffsetoffset-and-setlimitlimit" class="anchor" href="#setoffsetoffset-and-setlimitlimit"><span class="octicon octicon-link"></span></a>setOffset($offset) and setLimit($limit)</h4>
+
+<ul>
+<li>
+<code>setOffset</code> method specifies an optional offset for the return results.</li>
+<li>
+<code>setLimit</code> method specifies an optional maximum rows count for the return results. </li>
+</ul><p><strong>Both methods have no effect on the <code>fetchOne</code> method output</strong></p>
+
+<p>Here's an example:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">function</span> <span class="nf">filterByEmail</span><span class="p">(</span><span class="nv">$row</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nx">filer_var</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">sortByLastName</span><span class="p">(</span><span class="nv">$rowA</span><span class="p">,</span> <span class="nv">$rowB</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nb">strcmp</span><span class="p">(</span><span class="nv">$rowB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nv">$rowA</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$reader</span>
+    <span class="o">-&gt;</span><span class="na">setOffset</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setLimit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setFilter</span><span class="p">(</span><span class="s1">'filterByEmail'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setSortBy</span><span class="p">(</span><span class="s1">'sortByLastName'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">fetchAssoc</span><span class="p">([</span><span class="s1">'firstname'</span><span class="p">,</span> <span class="s1">'lastname'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">],</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">'strtoupper'</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// data length will be equals or lesser that 2 starting from the row index 3.</span>
+<span class="c1">// will return something like this :</span>
+<span class="c1">// </span>
+<span class="c1">// [ </span>
+<span class="c1">//   ['firstname' =&gt; 'JANE', 'lastname' =&gt; 'RAMANOV', 'email' =&gt; 'JANE.RAMANOV@EXAMPLE.COM'],</span>
+<span class="c1">//   ['firstname' =&gt; 'JOHN', 'lastname' =&gt; 'DOE', 'email' =&gt; 'JOHN.DOE@EXAMPLE.COM'],</span>
+<span class="c1">// ]</span>
+<span class="c1">// </span>
+</pre></div>
+
+<p><strong>Of note:</strong></p>
+
+<ul>
+<li>The filtering methods are chainable;</li>
+<li>The methods can be call in any sort of order before any <code>fetch*</code> method call;</li>
+<li>After a <code>fetch*</code> method call, all filtering options are cleared;</li>
+<li>Only the last filtering settings are taken into account if the same method is called more than once;</li>
+</ul><h3>
+<a name="manual-extracting-and-filtering" class="anchor" href="#manual-extracting-and-filtering"><span class="octicon octicon-link"></span></a>Manual extracting and filtering</h3>
+
+<p>If you want to output differently you data you can use the <code>query</code> method. It works like the <code>fetchAll</code> method but returns an <a href="http://php.net/manual/en/class.iterator.php">Iterator</a> that you may manipulate as you wish.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">function</span> <span class="nf">filterByEmail</span><span class="p">(</span><span class="nv">$row</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nx">filer_var</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">sortByLastName</span><span class="p">(</span><span class="nv">$rowA</span><span class="p">,</span> <span class="nv">$rowB</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nb">strcmp</span><span class="p">(</span><span class="nv">$rowB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nv">$rowA</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nv">$iterator</span> <span class="o">=</span> <span class="nv">$reader</span>
+    <span class="o">-&gt;</span><span class="na">setFilter</span><span class="p">(</span><span class="s1">'filterByEmail'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setSortBy</span><span class="p">(</span><span class="s1">'sortByLastName'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setOffset</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setLimit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">'strtoupper'</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="inserting-data-into-the-csv" class="anchor" href="#inserting-data-into-the-csv"><span class="octicon octicon-link"></span></a>Inserting data into the CSV</h2>
+
+<p>To create or update a CSV use the following specific <code>Bakame\Csv\Writer</code> methods.</p>
+
+<h4>
+<a name="insertone" class="anchor" href="#insertone"><span class="octicon octicon-link"></span></a>insertOne</h4>
+
+<p><code>insertOne</code> inserts a single row. This method can take an <code>array</code>, a <code>string</code> or an <code>object</code> implementing the <code>__toString</code> method.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">class</span> <span class="nc">ToStringEnabledClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$str</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">str</span> <span class="o">=</span> <span class="nv">$str</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">str</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">insertOne</span><span class="p">([</span><span class="s1">'john'</span><span class="p">,</span> <span class="s1">'doe'</span><span class="p">,</span> <span class="s1">'john.doe@example.com'</span><span class="p">]);</span> <span class="c1">//used with an array</span>
+<span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">insertOne</span><span class="p">(</span><span class="s2">"'john','doe','john.doe@example.com'"</span><span class="p">);</span>   <span class="c1">//used with a string</span>
+<span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">insertOne</span><span class="p">(</span><span class="k">new</span> <span class="nx">ToStringEnabledClass</span><span class="p">(</span><span class="s2">"john,doe,john.doe@example.com"</span><span class="p">))</span> <span class="c1">//used with an object implementing the '__toString' magic method;</span>
+
+</pre></div>
+
+<h4>
+<a name="insertall" class="anchor" href="#insertall"><span class="octicon octicon-link"></span></a>insertAll</h4>
+
+<p><code>insertAll</code> inserts multiple rows. This method can take an <code>array</code> or a <code>Traversable</code> object to add several rows to the CSV data.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">],</span>
+    <span class="s2">"'john','doe','john.doe@example.com'"</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">ToStringEnabledClass</span><span class="p">(</span><span class="s2">"john,doe,john.doe@example.com"</span><span class="p">)</span>
+<span class="p">];</span>
+
+<span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">insertAll</span><span class="p">(</span><span class="nv">$arr</span><span class="p">)</span> <span class="c1">//using an array </span>
+
+<span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayIterator</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>
+<span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">insertAll</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span> <span class="c1">//using a Traversable object</span>
+</pre></div>
+
+<p><strong>When inserting strings don't forget to specify the CSV delimiter and enclosure characters that match those use in the string</strong>.</p>
+
+<h2>
+<a name="switching-from-one-class-to-the-other" class="anchor" href="#switching-from-one-class-to-the-other"><span class="octicon octicon-link"></span></a>Switching from one class to the other</h2>
+
+<p>It is possible to switch between modes by using:</p>
+
+<ul>
+<li>the <code>Bakame\Csv\Writer::getReader</code> method from the <code>Bakame\Csv\Writer</code> class</li>
+<li>the <code>Bakame\Csv\Reader::getWriter</code> method from the <code>Bakame\Csv\Reader</code> class this method accept the optional <code>$open_mode</code> parameter.</li>
+</ul><div class="highlight highlight-php"><pre><span class="nv">$reader</span> <span class="o">=</span> <span class="nv">$writer</span><span class="o">-&gt;</span><span class="na">getReader</span><span class="p">();</span>
+<span class="nv">$newWriter</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">getWriter</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span> 
+</pre></div>
+
+<p><strong>be careful the <code>$newWriter</code> object is not equal to the <code>$writer</code> object!!</strong></p>
+
+</section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-1200654-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Bakame\Csv\Reader</title>
+
+	<script type="text/javascript" src="resources/combined.js?1196931423"></script>
+	<script type="text/javascript" src="elementlist.js?2258193498"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Bakame.html">Bakame<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Bakame.Csv.html">Csv<span></span></a>
+						<ul>
+				<li><a href="namespace-Bakame.Csv.Iterator.html">Iterator</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Bakame.Csv.AbstractCsv.html">AbstractCsv</a></li>
+				<li class="active"><a href="class-Bakame.Csv.Reader.html">Reader</a></li>
+				<li><a href="class-Bakame.Csv.Writer.html">Writer</a></li>
+			</ul>
+
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-Bakame.Csv.ConverterTrait.html">ConverterTrait</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Bakame.Csv.html" title="Summary of Bakame\Csv"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Reader</h1>
+
+
+	<div class="description">
+	
+<p>A class to manage extracting and filtering a CSV</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Bakame.Csv.AbstractCsv.html"><span>Bakame\Csv\AbstractCsv</span></a>
+			
+			 implements 
+				<a href="class-JsonSerializable.html"><span>JsonSerializable</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>
+			
+			 uses 
+				<a href="class-Bakame.Csv.ConverterTrait.html"><span>Bakame\Csv\ConverterTrait</span></a>
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Bakame\Csv\Reader</span></b>			
+			
+			 uses 
+				<a href="class-Bakame.Csv.Iterator.IteratorQuery.html"><span>Bakame\Csv\Iterator\IteratorQuery</span></a>
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Bakame.html">Bakame</a>\<a href="namespace-Bakame.Csv.html">Csv</a><br />
+		<b>Package:</b> Bakame\csv<br />
+
+				<b>Since:</b>
+				3.0.0<br />
+		<b>Located at</b> <a href="source-class-Bakame.Csv.Reader.html#40-211" title="Go to source code">Reader.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="query" id="_query">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Iterator.html">Iterator</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#80-94" title="Go to source code">query</a>( <span>callable <var>$callable</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a Filtered Iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a Filtered Iterator</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callable</var></dt>
+					<dd><code>callable</code><br>$callable a callable function to be applied to each Iterator item</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Iterator.html">Iterator</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchOne" id="_fetchOne">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchOne">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#96-117" title="Go to source code">fetchOne</a>( <span>integer <var>$offset</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a single row from the CSV</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a single row from the CSV</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>integer</code><br>$offset</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If the $offset is not a valid Integer<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchAll" id="_fetchAll">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchAll">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#119-131" title="Go to source code">fetchAll</a>( <span>callable <var>$callable</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a sequential array of all CSV lines</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a sequential array of all CSV lines</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callable</var></dt>
+					<dd><code>callable</code><br>$callable a callable function to be applied to each Iterator item</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchAssoc" id="_fetchAssoc">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchAssoc">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#133-161" title="Go to source code">fetchAssoc</a>( <span>array <var>$keys</var></span>, <span>callable <var>$callable</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a sequential array of all CSV lines; the rows are presented as
+associated arrays</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a sequential array of all CSV lines; the rows are presented as
+associated arrays</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$keys</var></dt>
+					<dd><code>array</code><br>$keys the name for each key member</dd>
+					<dt><var>$callable</var></dt>
+					<dd><code>callable</code><br>$callable a callable function to be applied to each Iterator item</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If the submitted keys are not integer or strng<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchCol" id="_fetchCol">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchCol">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#163-191" title="Go to source code">fetchCol</a>( <span>integer <var>$columnIndex</var> = <span class="php-num">0</span></span>, <span>callable <var>$callable</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a single column from the CSV data</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a single column from the CSV data</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$columnIndex</var></dt>
+					<dd><code>integer</code><br>$fieldIndex field Index</dd>
+					<dt><var>$callable</var></dt>
+					<dd><code>callable</code><br>$callable a callable function to be applied to each value to be return</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If the column index is not a positive integer or 0<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWriter" id="_getWriter">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.Writer.html">Bakame\Csv\Writer</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWriter">#</a>
+		<code><a href="source-class-Bakame.Csv.Reader.html#193-210" title="Go to source code">getWriter</a>( <span>string <var>$open_mode</var> = <span class="php-quote">'w'</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Instantiate a <code><a href="class-Bakame.Csv.Writer.html">Bakame\Csv\Writer</a></code> class from the current <code><a href="class-Bakame.Csv.Reader.html">Bakame\Csv\Reader</a></code></p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Instantiate a <code><a href="class-Bakame.Csv.Writer.html">Bakame\Csv\Writer</a></code> class from the current <code><a href="class-Bakame.Csv.Reader.html">Bakame\Csv\Reader</a></code></p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$open_mode</var></dt>
+					<dd><code>string</code><br>$open_mode the file open mode flag</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.Writer.html">Bakame\Csv\Writer</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Bakame.Csv.AbstractCsv.html#methods">Bakame\Csv\AbstractCsv</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Bakame.Csv.AbstractCsv.html#___construct">__construct()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#___destruct">__destruct()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_createFromString">createFromString()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_fetchFile">fetchFile()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getDelimiter">getDelimiter()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getEnclosure">getEnclosure()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getEncoding">getEncoding()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getEscape">getEscape()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getFlags">getFlags()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_getIterator">getIterator()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_isValidString">isValidString()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_setDelimiter">setDelimiter()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_setEnclosure">setEnclosure()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_setEncoding">setEncoding()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_setEscape">setEscape()</a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#_setFlags">setFlags()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-JsonSerializable.html#methods">JsonSerializable</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-JsonSerializable.html#_jsonSerialize">jsonSerialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+	<table class="summary used">
+	<caption>Methods used from <a href="class-Bakame.Csv.Iterator.IteratorQuery.html#methods">Bakame\Csv\Iterator\IteratorQuery</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Bakame.Csv.Iterator.IteratorQuery.html#_execute">()</a>, 
+			<a href="class-Bakame.Csv.Iterator.IteratorQuery.html#_setFilter">()</a>, 
+			<a href="class-Bakame.Csv.Iterator.IteratorQuery.html#_setLimit">()</a>, 
+			<a href="class-Bakame.Csv.Iterator.IteratorQuery.html#_setOffset">()</a>, 
+			<a href="class-Bakame.Csv.Iterator.IteratorQuery.html#_setSortBy">()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-Bakame.Csv.ConverterTrait.html#methods">Bakame\Csv\ConverterTrait</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Bakame.Csv.ConverterTrait.html#___toString">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_convert2Utf8">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_jsonSerialize">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_output">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_toHTML">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_toXML">()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="available_open_mode" id="$available_open_mode">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.Reader.html#54-57" title="Go to source code"><var>$available_open_mode</var></a>
+		</td>
+		<td class="value"><code>[<span class="php-quote">'r'</span>]</code></td>
+		<td class="description"><div>
+			<a href="#$available_open_mode" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Open mode available flag</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Open mode available flag</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Bakame.Csv.AbstractCsv.html#properties">Bakame\Csv\AbstractCsv</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Bakame.Csv.AbstractCsv.html#$csv"><var>$csv</var></a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#$delimiter"><var>$delimiter</var></a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#$enclosure"><var>$enclosure</var></a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#$encoding"><var>$encoding</var></a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#$escape"><var>$escape</var></a>, 
+			<a href="class-Bakame.Csv.AbstractCsv.html#$flags"><var>$flags</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

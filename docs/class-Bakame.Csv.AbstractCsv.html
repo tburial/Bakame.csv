@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Bakame\Csv\AbstractCsv</title>
+
+	<script type="text/javascript" src="resources/combined.js?1196931423"></script>
+	<script type="text/javascript" src="elementlist.js?2258193498"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Bakame.html">Bakame<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Bakame.Csv.html">Csv<span></span></a>
+						<ul>
+				<li><a href="namespace-Bakame.Csv.Iterator.html">Iterator</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Bakame.Csv.AbstractCsv.html">AbstractCsv</a></li>
+				<li><a href="class-Bakame.Csv.Reader.html">Reader</a></li>
+				<li><a href="class-Bakame.Csv.Writer.html">Writer</a></li>
+			</ul>
+
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-Bakame.Csv.ConverterTrait.html">ConverterTrait</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Bakame.Csv.html" title="Summary of Bakame\Csv"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class AbstractCsv</h1>
+
+
+	<div class="description">
+	
+<p>A abstract class to enable basic CSV manipulation</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Bakame\Csv\AbstractCsv</span></b>			
+			 implements 
+				<a href="class-JsonSerializable.html"><span>JsonSerializable</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>
+			
+			 uses 
+				<a href="class-Bakame.Csv.ConverterTrait.html"><span>Bakame\Csv\ConverterTrait</span></a>
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Bakame.Csv.Reader.html">Bakame\Csv\Reader</a>, 
+			<a href="class-Bakame.Csv.Writer.html">Bakame\Csv\Writer</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Bakame.html">Bakame</a>\<a href="namespace-Bakame.Csv.html">Csv</a><br />
+		<b>Package:</b> Bakame\csv<br />
+
+				<b>Since:</b>
+				4.0.0<br />
+		<b>Located at</b> <a href="source-class-Bakame.Csv.AbstractCsv.html#43-351" title="Go to source code">AbstractCsv.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#106-116" title="Go to source code">__construct</a>( <span>mixed <var>$path</var></span>, <span>string <var>$open_mode</var> = <span class="php-quote">'r'</span></span> )</code>
+
+		<div class="description short">
+			
+<p>The constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>The constructor</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd><code>mixed</code><br>$path an SplFileInfo object or the path to a file</dd>
+					<dt><var>$open_mode</var></dt>
+					<dd><code>string</code><br>$open_mode the file open mode flag</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__destruct" id="___destruct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___destruct">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#118-126" title="Go to source code">__destruct</a>( )</code>
+
+		<div class="description short">
+			
+<p>The destructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>The destructor</p>
+
+<p>Make sure the class reference is destroy when the class is no longer used</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createFromString" id="_createFromString">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createFromString">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#128-150" title="Go to source code">createFromString</a>( <span>string <var>$str</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a <code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code> from a string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a <code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code> from a string</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$str</var></dt>
+					<dd><code>string</code><br>$str The CSV data as string</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If the data provided is invalid<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isValidString" id="_isValidString">
+
+		<td class="attributes"><code>
+			 public static
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isValidString">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#152-162" title="Go to source code">isValidString</a>( <span>mixed <var>$str</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Validate a variable to be stringable</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate a variable to be stringable</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$str</var></dt>
+					<dd><code>mixed</code><br>$str</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fetchFile" id="_fetchFile">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-SplFileObject.html">SplFileObject</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetchFile">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#164-195" title="Go to source code">fetchFile</a>( <span>mixed <var>$path</var></span>, <span>mixed <var>$open_mode</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Return a new <code><a href="class-SplFileObject.html">SplFileObject</a></code></p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return a new <code><a href="class-SplFileObject.html">SplFileObject</a></code></p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd><code>mixed</code><br>$path A SplFileInfo object or the path to a file</dd>
+					<dt><var>$open_mode</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-SplFileObject.html">SplFileObject</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If the $file is not set<br />
+					<code><code><a href="class-RuntimeException.html">RuntimeException</a></code></code><br>If the $file could not be created and/or opened<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDelimiter" id="_setDelimiter">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDelimiter">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#197-214" title="Go to source code">setDelimiter</a>( <span>string <var>$delimiter</var> = <span class="php-quote">','</span></span> )</code>
+
+		<div class="description short">
+			
+<p>set the field delimeter</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>set the field delimeter</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$delimiter</var></dt>
+					<dd><code>string</code><br>$delimiter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If $delimeter is not a single character<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDelimiter" id="_getDelimiter">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDelimiter">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#216-224" title="Go to source code">getDelimiter</a>( )</code>
+
+		<div class="description short">
+			
+<p>return the current field delimiter</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>return the current field delimiter</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEnclosure" id="_setEnclosure">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEnclosure">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#226-243" title="Go to source code">setEnclosure</a>( <span>string <var>$enclosure</var> = <span class="php-quote">'&quot;'</span></span> )</code>
+
+		<div class="description short">
+			
+<p>set the field enclosure</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>set the field enclosure</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$enclosure</var></dt>
+					<dd><code>string</code><br>$enclosure</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If $enclosure is not a single character<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEnclosure" id="_getEnclosure">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEnclosure">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#245-253" title="Go to source code">getEnclosure</a>( )</code>
+
+		<div class="description short">
+			
+<p>return the current field enclosure</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>return the current field enclosure</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEscape" id="_setEscape">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEscape">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#255-272" title="Go to source code">setEscape</a>( <span>string <var>$escape</var> = <span class="php-quote">&quot;\\&quot;</span></span> )</code>
+
+		<div class="description short">
+			
+<p>set the field escape character</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>set the field escape character</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$escape</var></dt>
+					<dd><code>string</code><br>$escape</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br>If $escape is not a single character<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEscape" id="_getEscape">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEscape">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#274-282" title="Go to source code">getEscape</a>( )</code>
+
+		<div class="description short">
+			
+<p>return the current field escape character</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>return the current field escape character</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFlags" id="_setFlags">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFlags">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#284-298" title="Go to source code">setFlags</a>( <span>mixed <var>$flags</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the Flags associated to the CSV SplFileObject</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the Flags associated to the CSV SplFileObject</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFlags" id="_getFlags">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFlags">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#300-308" title="Go to source code">getFlags</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns the file Flags</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the file Flags</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEncoding" id="_setEncoding">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEncoding">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#310-327" title="Go to source code">setEncoding</a>( <span>string <var>$str</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the CSV encoding charset</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the CSV encoding charset</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$str</var></dt>
+					<dd><code>string</code><br>$str</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Bakame.Csv.AbstractCsv.html">Bakame\Csv\AbstractCsv</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEncoding" id="_getEncoding">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEncoding">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#329-337" title="Go to source code">getEncoding</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the CSV encoding charset</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the CSV encoding charset</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIterator" id="_getIterator">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-SplFileObject.html">SplFileObject</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIterator">#</a>
+		<code><a href="source-class-Bakame.Csv.AbstractCsv.html#339-350" title="Go to source code">getIterator</a>( )</code>
+
+		<div class="description short">
+			
+<p>Return the CSV Iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return the CSV Iterator</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-SplFileObject.html">SplFileObject</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-JsonSerializable.html#methods">JsonSerializable</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-JsonSerializable.html#_jsonSerialize">jsonSerialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+	<table class="summary used">
+	<caption>Methods used from <a href="class-Bakame.Csv.ConverterTrait.html#methods">Bakame\Csv\ConverterTrait</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Bakame.Csv.ConverterTrait.html#___toString">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_convert2Utf8">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_jsonSerialize">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_output">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_toHTML">()</a>, 
+			<a href="class-Bakame.Csv.ConverterTrait.html#_toXML">()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="csv" id="$csv">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-SplFileObject.html">SplFileObject</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#57-62" title="Go to source code"><var>$csv</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$csv" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>The CSV object holder</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The CSV object holder</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="delimiter" id="$delimiter">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#64-69" title="Go to source code"><var>$delimiter</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">','</span></code></td>
+		<td class="description"><div>
+			<a href="#$delimiter" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>the field delimiter (one character only)</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>the field delimiter (one character only)</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="enclosure" id="$enclosure">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#71-76" title="Go to source code"><var>$enclosure</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">'&quot;'</span></code></td>
+		<td class="description"><div>
+			<a href="#$enclosure" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>the field enclosure character (one character only)</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>the field enclosure character (one character only)</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="escape" id="$escape">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#78-83" title="Go to source code"><var>$escape</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">'\\'</span></code></td>
+		<td class="description"><div>
+			<a href="#$escape" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>the field escape character (one character only)</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>the field escape character (one character only)</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="flags" id="$flags">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#85-90" title="Go to source code"><var>$flags</var></a>
+		</td>
+		<td class="value"><code>Bakame\Csv\SplFileObject::READ_CSV</code></td>
+		<td class="description"><div>
+			<a href="#$flags" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>the \SplFileObject flags holder</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>the \SplFileObject flags holder</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="encoding" id="$encoding">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#92-97" title="Go to source code"><var>$encoding</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">'UTF-8'</span></code></td>
+		<td class="description"><div>
+			<a href="#$encoding" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Charset Encoding for the CSV</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Charset Encoding for the CSV</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="available_open_mode" id="$available_open_mode">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Bakame.Csv.AbstractCsv.html#99-104" title="Go to source code"><var>$available_open_mode</var></a>
+		</td>
+		<td class="value"><code>[<span class="php-quote">'r'</span>, <span class="php-quote">'r+'</span>, <span class="php-quote">'w'</span>, <span class="php-quote">'w+'</span>, <span class="php-quote">'x'</span>, <span class="php-quote">'x+'</span>, <span class="php-quote">'a'</span>, <span class="php-quote">'a+'</span>, <span class="php-quote">'c'</span>, <span class="php-quote">'c+'</span>]</code></td>
+		<td class="description"><div>
+			<a href="#$available_open_mode" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Open mode available flag</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Open mode available flag</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
