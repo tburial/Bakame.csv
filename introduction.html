@@ -8,19 +8,127 @@
 <link rel="stylesheet" href="stylesheets/normalize.css">
 <link rel="stylesheet" href="stylesheets/font.css">
 <style>
-body {
-	margin: 0;
-	padding: 0 0 20px 0;
-	font: normal 14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #f0e7d5;
-	background-color: #252525;
-	background-attachment: fixed !important;
-	background:linear-gradient(#2a2a29, #1c1c1c);
- }
+html, body {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    background-color: #E2E2E2;
+}
+
+a {
+    color:#D71116;
+}
+
+header[role=banner] {
+    font:normal 100%/1.5 Palatino,Georgia,Times,"Times New Roman",Serif;
+    margin: 0 auto 1em;
+    padding: 5px;
+    background-color: #fff;
+    color: #444;
+    text-align: center;
+}
+
+header[role=banner] h1 {
+    font-weight: normal;
+    font-size:1.3em;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+footer[role=contentinfo] {
+    font:normal 16px/1.5 Palatino,Georgia,Times,"Times New Roman",Serif;
+    min-height: 190px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #fff;
+    color: #444;
+    text-align: center;
+    transition: all 1s linear;
+}
+
+footer[role=contentinfo] a {
+    font-family:Palatino,Georgia,Times,"Times New Roman",Serif;
+    color: rgb(252, 96, 0);
+    transition: all .3s linear;
+}
+
+footer[role=contentinfo] a:hover {
+    color: #222;
+}
+
+footer[role=contentinfo] strong {
+    color: rgb(0, 137, 211);
+}
+
+footer[role=contentinfo] div {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 5px;
+    max-width: 670px;
+    color: #999;
+}
+
+footer[role=contentinfo] div:before,
+footer[role=contentinfo] div:after {
+    display: table;
+    content: '';
+}
+footer[role=contentinfo] div:after {
+    clear: both;
+}
+
+footer[role=contentinfo] ul {
+    list-style: none;
+    margin: 5px auto;
+    width: 60%;
+}
+
+footer[role=contentinfo] li {
+    display: inline;
+    margin: 0 3px;
+}
+
+footer[role=contentinfo] li:before {
+    content: " | ";
+}
+
+footer[role=contentinfo] li:first-of-type:before {
+    content: "";
+}
+
+footer[role=contentinfo] p {
+    text-align: left;
+}
+
+footer[role=contentinfo] .alignleft {
+    margin: 0 .3em .3em 0;
+}
+
+footer[role=contentinfo] .copyrights {
+    padding: 10px 5px;
+    font-style: normal;
+    font-size: .8em;
+    text-align: center;
+}
+
+.message-info {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin:0 auto .3em;
+    padding:.3em;
+    font:normal 16px/1.5 Open Sans, sans-serif;
+    text-align:center;
+    background-color:#B9E6F7;
+    color:#227796;
+    width:80%;
+    border-radius:.3em;
+}
 </style>
 </head>
 <body>
-<header>
+<header role="banner">
 	<h1>Bakame.csv</h1>
 	<p class="tagline">Csv data manipulation made easy in PHP</p>
 </header>
@@ -38,6 +146,7 @@ body {
 			<li><a href="#">Filtering a CSV</a>
 			<li><a href="#">Writing a CSV</a>
 			<li><a href="#">Outputting a CSV</a>
+			<li><a href="#">Annotated library source code</a>
 		</ul>
 	</menu>
 	<article>
@@ -60,7 +169,7 @@ body {
 		<p>Bakame.csv was created by Nyamagana Butera Ignace</p>
 	</article>
 </main>
-<footer>
+<footer role="contentinfo">
 	<span>&copy; Nyamagana Butera Ignace.</span>
 	<span>Site design by Nyamagana Butera Ignace</span>
 </footer>
