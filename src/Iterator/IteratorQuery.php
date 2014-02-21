@@ -122,13 +122,24 @@ trait IteratorQuery
         return $this;
     }
 
+    /**
+     * Sort the Iterator
+     *
+     * @param \Iterator $iterator
+     *
+     * @return self
+     */
     public function applySortBy(&$iterator)
     {
         if (! $this->sortBy) {
             return $this;
         }
         $res = iterator_to_array($iterator, false);
-        $fields = $this->fetchSortingFields($res);
+        $column_to_sort = [];
+        foreach ($this->sortBy as $args) {
+            $column_to_sort[] = $args[0];
+        }
+        $fields = $this->fetchSortingFields($res, $column_to_sort);
         $sort = [];
         foreach ($this->sortBy as $args) {
             $sort[] = $fields[$args[0]];
@@ -143,13 +154,18 @@ trait IteratorQuery
         return $this;
     }
 
-    protected function fetchSortingFields(array $res)
+    /**
+     * Get a column data to use for sorting
+     *
+     * @param array $res            the multidimentional array
+     * @param array $column_to_sort the column index to get
+     *
+     * @return array
+     *
+     * @throws \RuntimeException If the columnIndex is not present in one raw
+     */
+    protected function fetchSortingFields(array $res, array $column_to_sort)
     {
-        $column_to_sort = [];
-        foreach ($this->sortBy as $args) {
-            $column_to_sort[] = $args[0];
-        }
-
         $fields = array_fill_keys($column_to_sort, []);
         foreach ($res as $key => $values) {
             foreach ($column_to_sort as $columnIndex) {
@@ -163,6 +179,13 @@ trait IteratorQuery
         return $fields;
     }
 
+    /**
+     * Validate a value to be a positive integer or equal to 0
+     *
+     * @param mixed $value
+     *
+     * @return boolean
+     */
     protected function isValidInteger($value)
     {
         return false !== filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 0]]);
@@ -202,6 +225,13 @@ trait IteratorQuery
         return $this;
     }
 
+    /**
+     * apply offset and limit condition to the Iterator
+     *
+     * @param Iterator $iterator
+     *
+     * @return self
+     */
     protected function applyInterval(&$iterator)
     {
         if (-1 == $this->limit && 0 == $this->offset) {

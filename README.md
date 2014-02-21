@@ -256,7 +256,11 @@ You can further manipulate the CSV `fetch*` methods output by specifying filteri
 
 #### setFilter($callable = null)
 
-`setFilter` method specifies an optional `callable` function to filter the CSV data. This function takes three parameters at most (see [CallbackFilterIterator][] for more informations)
+`setFilter` method specifies an optional `callable` function to filter the CSV data. This function takes three parameters at most (see [CallbackFilterIterator][] for more informations).
+
+**Of Note**
+
+If you call several times this method, the `callable` function will be applied in the same order you registrated them.
 
 [CallbackFilterIterator]: http://php.net/manual/en/class.callbackfilteriterator.php#callbackfilteriterator.examples
 
@@ -270,7 +274,8 @@ You can further manipulate the CSV `fetch*` methods output by specifying filteri
 
 **Of Note**
 
-* You can add multiple filtering and sorting conditions by calling `setFilter` and `setSortBy` as many time as you wish.
+* If you call several times this method, the CSV will be sorted in the order you registrated the sort conditions.
+* If for the same column you register different sorting order the only last sorting order will be taken into account
 
 #### setOffset($offset) and setLimit($limit)
 
