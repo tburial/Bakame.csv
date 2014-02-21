@@ -294,16 +294,11 @@ function filterByEmail($row)
     return filer_var($row[2], FILTER_VALIDATE_EMAIL);
 }
 
-function sortByLastName($rowA, $rowB)
-{
-    return strcmp($rowB[1], $rowA[1]);
-}
-
 $data = $reader
     ->setOffset(3)
     ->setLimit(2)
     ->setFilter('filterByEmail')
-    ->setSortBy('sortByLastName')
+    ->setSortBy(1, SORT_ASC)
     ->fetchAssoc(['firstname', 'lastname', 'email'], function ($value) {
     return array_map('strtoupper', $value);
 });
@@ -335,14 +330,9 @@ function filterByEmail($row)
     return filer_var($row[2], FILTER_VALIDATE_EMAIL);
 }
 
-function sortByLastName($rowA, $rowB)
-{
-    return strcmp($rowB[1], $rowA[1]);
-}
-
 $iterator = $reader
     ->setFilter('filterByEmail')
-    ->setSortBy('sortByLastName')
+    ->setSortBy(1, SORT_DESC)
     ->setOffset(3)
     ->setLimit(2)
     ->query(function ($value) {
