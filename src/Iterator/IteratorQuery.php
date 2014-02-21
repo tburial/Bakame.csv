@@ -90,6 +90,13 @@ trait IteratorQuery
         return $this;
     }
 
+    /**
+     * Filter the Iterator
+     *
+     * @param \Iterator $iterator
+     *
+     * @return self
+     */
     protected function applyFilter(&$iterator)
     {
         if (! $this->filter) {
@@ -135,16 +142,8 @@ trait IteratorQuery
             return $this;
         }
         $res = iterator_to_array($iterator, false);
-        $column_to_sort = [];
-        foreach ($this->sortBy as $args) {
-            $column_to_sort[] = $args[0];
-        }
-        $fields = $this->fetchSortingFields($res, $column_to_sort);
-        $sort = [];
-        foreach ($this->sortBy as $args) {
-            $sort[] = $fields[$args[0]];
-            $sort[] = $args[1];
-        }
+        $fields = $this->fetchSortingFields($res, $this->sortBy);
+        $sort = $this->prepareSort($fields, $this->sortBy);
         $sort[] = &$res;
         call_user_func_array('array_multisort', $sort);
         $this->sortBy = [];
@@ -155,17 +154,39 @@ trait IteratorQuery
     }
 
     /**
+     * Prepare Data to be sorted
+     *
+     * @param array $fields fields to be sorted
+     * @param array $sortBy sorting settings
+     *
+     * @return array
+     */
+    protected function prepareSort(array $fields, array $sortBy)
+    {
+        $sort = [];
+        foreach ($sortBy as $args) {
+            $sort[] = $fields[$args[0]];
+            $sort[] = $args[1];
+        }
+
+        return $sort;
+    }
+
+    /**
      * Get a column data to use for sorting
      *
-     * @param array $res            the multidimentional array
-     * @param array $column_to_sort the column index to get
+     * @param array $res    multidimentional array
+     * @param array $sortby sorting settings
      *
      * @return array
      *
      * @throws \RuntimeException If the columnIndex is not present in one raw
      */
-    protected function fetchSortingFields(array $res, array $column_to_sort)
+    protected function fetchSortingFields(array $res, array $sortBy)
     {
+        foreach ($sortBy as $args) {
+            $column_to_sort[] = $args[0];
+        }
         $fields = array_fill_keys($column_to_sort, []);
         foreach ($res as $key => $values) {
             foreach ($column_to_sort as $columnIndex) {
