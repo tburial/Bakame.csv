@@ -260,18 +260,26 @@ You can further manipulate the CSV `fetch*` methods output by specifying filteri
 
 [CallbackFilterIterator]: http://php.net/manual/en/class.callbackfilteriterator.php#callbackfilteriterator.examples
 
-#### setSortBy($callable = null)
+#### setSortBy($columnIndex, $sort_order)
 
-`setSortBy` method specifies an optional `callable` function to sort the CSV data. The function takes two parameters which will be filled by pairs of rows.
+`setSortBy` method can sort the CSV data according:
+* to a columnIndex (starting at 0)
+* to a PHP sort flag constant (ie: `SORT_ASC` or `SORT_DESC`)
 
 **Beware when using this filter that you will be using `iterator_to_array` which could lead to performance penalty if you have a heavy CSV file to sort**
+
+**Of Note**
+
+* You can add multiple filtering and sorting conditions by calling `setFilter` and `setSortBy` as many time as you wish.
 
 #### setOffset($offset) and setLimit($limit)
 
 * `setOffset` method specifies an optional offset for the return results.
 * `setLimit` method specifies an optional maximum rows count for the return results. 
 
-**Both methods have no effect on the `fetchOne` method output**
+**Of Note**
+* Both methods have no effect on the `fetchOne` method output
+* Only the last call is taken into account if both methods are called more than once
 
 Here's an example:
 
@@ -308,7 +316,7 @@ $data = $reader
 * The filtering methods are chainable;
 * The methods can be call in any sort of order before any `fetch*` method call;
 * After a `fetch*` method call, all filtering options are cleared;
-* Only the last filtering settings are taken into account if the same method is called more than once;
+
 
 ### Manual extracting and filtering
 

@@ -9,23 +9,25 @@ $inputCsv = new Reader(new SplFileObject('data/prenoms.csv'));
 $inputCsv->setDelimiter(';');
 $inputCsv->setEncoding("iso-8859-15");
 
-//we filter only the least girl firstname given in 2010
-$filter = function ($row, $index) {
-    return $index > 0                   //we don't take into account the header
-    && isset($row[1], $row[2], $row[3]) //we make sure the data are present
-    && 10 > $row[1]                     //the name is used less than 10 times
-    && 2010 == $row[3]                  //we are looking for the year 2010
-    && 'F' == $row[2];                  //we are only interested in girl firstname
-};
-
 //we order the result according to the number of firstname given
 $sortBy = function ($row1, $row2) {
     return strcmp($row1[1], $row2[1]);
 };
 
 $res = $inputCsv
-    ->setFilter($filter)
-    ->setSortBy($sortBy)
+    ->setFilter(function ($row, $index) {
+        return $index > 0; //we don't take into account the header
+    })
+    ->setFilter(function ($row, $index) {
+        return isset($row[2]) && 'F' == $row[2]; //we are only interested in girl firstname
+    })
+    ->setFilter(function ($row, $index) {
+        return isset($row[3]) && 2010 == $row[3]; //we are looking for the year 2010
+    })
+    ->setFilter(function ($row, $index) {
+        return isset($row[1]) && 10 > $row[1]; //the name is used less than 10 times
+    })
+    ->setSortBy(1, SORT_ASC)
     ->setLimit(20) //we just want the first 20 results
     ->fetchAll();
 

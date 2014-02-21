@@ -46,11 +46,7 @@ $writer->insertAll([
 
 //we create a Reader object from the Writer object
 $reader = $writer->getReader();
-$names = $reader
-    ->setSortBy(function ($row1, $row2) {
-        return strcmp($row1[0], $row2[0]); //we are sorting the name
-    })
-    ->fetchCol(0); //we only return the name column
+$names = $reader->setSortBy(0, SORT_DESC)->fetchCol(); //we only return the name column
 ?>
 <!doctype html>
 <html lang="fr">

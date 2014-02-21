@@ -94,11 +94,61 @@ class IteratorQueryTest extends PHPUnit_Framework_TestCase
 
     public function testSortBy()
     {
-        $this->traitQuery->setSortBy('strcmp');
-        $iterator = $this->invokeMethod($this->traitQuery, 'execute', [$this->iterator]);
-        $res = iterator_to_array($iterator);
+        $sortingData = [
+            ['john', 'doe', 'john.doe@example.com'],
+            ['son','of','son.of@example.com'],
+            ['dana','doe','jane.doe@example.com'],
+        ];
 
-        $this->assertSame(['bar', 'foo', 'jane', 'john'], array_values($res));
+        $expectedData = [
+            ['dana','doe','jane.doe@example.com'],
+            ['john', 'doe', 'john.doe@example.com'],
+            ['son','of','son.of@example.com'],
+        ];
+
+        $traitQuery = $this->createTraitObject();
+        $iterator = new ArrayIterator($sortingData);
+
+        $traitQuery->setSortBy(0, SORT_ASC);
+        $iterator = $this->invokeMethod($traitQuery, 'execute', [$iterator]);
+        $res = iterator_to_array($iterator, false);
+
+        $this->assertSame($expectedData, $res);
+    }
+
+    /**
+     * @expectedException \RuntimeException
+     */
+    public function testInconsistentCSVSortBy()
+    {
+        $raw = [
+            ['john', 1,],
+            ['malick', 2, 'superman'],
+            ['malick', 5, 'machete'],
+            ['data', 3, 'bouba'],
+        ];
+
+        $traitQuery = $this->createTraitObject();
+        $iterator = new ArrayIterator($raw);
+
+        $traitQuery->setSortBy(2, SORT_ASC);
+        $this->invokeMethod($traitQuery, 'execute', [$iterator]);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidColumnIndexSetSortBy()
+    {
+        $this->traitQuery->setSortBy('annee', SORT_DESC);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidSortFlagSetSortBy()
+    {
+        $this->traitQuery->setSortBy(3, 'SORT_DESC');
     }
 
     public function testExecuteWithCallback()
